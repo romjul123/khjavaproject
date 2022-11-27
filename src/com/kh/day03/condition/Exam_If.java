@@ -16,7 +16,7 @@ public class Exam_If {
 			result = "홀수";
 		}
 		
-		// 판별 후 출력
+		// 판별 후 출력제어문
 		System.out.println(input + "은/는 " + result + "입니다");
 	}
 
