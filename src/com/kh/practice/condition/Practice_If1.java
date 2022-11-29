@@ -7,15 +7,17 @@ public class Practice_If1 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("정수 : ");
 		int num = sc.nextInt();
+		String result = "";
 		if (num == 0) {
-			System.out.print("0이다");
+			result = "0이다";
 		} else if (num > 0) {
-			System.out.print("양수다");
+			result = "양수다";
 		} else {
-			System.out.print("음수다");
-			
+			result = "음수다";
 		}
+		System.out.println(result);
+		
+				
 	}
 
-	
 }
