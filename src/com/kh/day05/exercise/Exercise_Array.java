@@ -101,4 +101,20 @@ public class Exercise_Array {
 			System.out.print(origin[i]);
 		}
 	}
-}
+
+
+    // forEach문1
+    public void exercise6() {
+    	int [] nums = {1, 2, 3, 4, 5}; // 할당과 초기화 동시에
+    	for(int num : nums) {
+    		System.out.print(num + " ");
+    		
+    	}
+    }
+    public void exercise7() {
+    	String [] fruits = {"딸기", "복숭아", "포도" , "체리", "망고"};
+    	for(String fruit : fruits) {
+    		System.out.print(fruit + " ");
+    	}
+    }
+}   

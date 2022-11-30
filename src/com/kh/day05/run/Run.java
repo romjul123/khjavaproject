@@ -11,7 +11,7 @@ public class Run {
 		//Exercise_While exWhile = new Exercise_While();
 		//exWhile.exercise3();
 		Exercise_Array exArr = new Exercise_Array();
-		exArr.exercise5();
+		exArr.exercise7();
 	}
 
 }
