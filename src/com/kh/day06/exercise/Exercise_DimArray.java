@@ -9,7 +9,6 @@ public class Exercise_DimArray {
 		// 25  24  23  22  21
 		int [][] arrs = new int[5][5];
 		int k = 1;
-		arrs[0][0] = 1;
 		for(int i = 0; i < arrs.length; i++) {
 			for(int e = arrs.length-1; e >= 0; e--) {
 				arrs[i][e] = k;
@@ -76,7 +75,7 @@ public class Exercise_DimArray {
 		
 	}
 	public void exercise4() {
-	//  1    2    3    4    5
+	    //  1    2    3    4    5
 		// 10    9    8    7    6
 		// 11   12   13   14   15
 		// 20   19   18   17   16
