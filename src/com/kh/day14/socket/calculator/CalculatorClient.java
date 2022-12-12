@@ -1,4 +1,4 @@
-package com.kh.day13.socket.baseball;
+package com.kh.day14.socket.calculator;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,11 +9,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class BaseballClient {
+public class CalculatorClient {
 	public static void main(String [] args) {
 		Socket socket = null;
 		String address = "127.0.0.1";
-		int port = 8589;
+		int port = 8989;
 		InputStream is = null;
 		OutputStream os = null;
 		DataInputStream dis = null;
@@ -21,24 +21,32 @@ public class BaseballClient {
 		Scanner sc = new Scanner(System.in);
 		try {
 			socket = new Socket(address, port);
-			System.out.println("클라이언트 소켓을 생성하였습니다.");
-			is = socket.getInputStream();
+			System.out.println("서버와 연결되었습니다.");
 			os = socket.getOutputStream();
-			dis = new DataInputStream(is);
+			is = socket.getInputStream();
 			dos = new DataOutputStream(os);
-			System.out.println("게임 준비 완료");
+			dis = new DataInputStream(is);
 			while(true) {
-				// 값 보내기
-				System.out.print("--> ");
-				// 결과값 받기
-				String input = sc.nextLine();
-				dos.writeUTF(input);
-
-				String resultMsg = dis.readUTF();
-				System.out.println(resultMsg);
-				if(resultMsg.startsWith("3")) {
+				// 계산식(빈칸으로 띄어 입력, 예 24 + 42) >> 12 + 1
+				// 1. 입력받기
+				System.out.print("계산식(빈칸으로 띄어 입력, 예 24 + 42) >> ");
+				String inputval = sc.nextLine();
+				// 2. 보내기
+				dos.writeUTF(inputval);
+				if(inputval.equalsIgnoreCase("bye")) {
+					System.out.println("종료하였습니다.");
 					break;
 				}
+				// 보내기 끝
+				// 계산결과 : 13
+				String resultMsg = dis.readUTF();
+				if(resultMsg.equalsIgnoreCase("end")) {
+					System.out.println("잘못 입력하였습니다. 형식에 맞게 입력해주세요.");
+					continue;
+				}
+				// The local variable resultMsg may not have been initialized
+				System.out.println("계산결과 : " + resultMsg);
+				
 			}
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -46,17 +54,6 @@ public class BaseballClient {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				dos.close();
-				dis.close();
-				is.close();
-				os.close();
-				socket.close();
-				sc.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
